@@ -4,10 +4,11 @@
   "description": "SEO.js makes your BackboneJS, AngularJS or EmberJS apps crawlable by Google to make them appear in search results",
   "author": "SEO.js",
   "license": "MIT",
+  "homepage": "http://getseojs.com/",
   "main": "seo.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/seojs/express-seojs"
+    "url": "https://github.com/seojs/express-seojs.git"
   },
   "keywords": [
     "backbone",
