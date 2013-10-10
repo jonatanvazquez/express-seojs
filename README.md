@@ -1,7 +1,7 @@
 SEO.js for Node.js
 ==================
 
-Welcome to SEO.js for Node.js! SEO.js makes your BackboneJS, AngularJS or EmberJS apps crawlable by Google to make them appear in search results. Integrating it to your Node.js (read: Express.js) application is easy.
+Welcome to [SEO.js](http://getseojs.com/) for Node.js! SEO.js makes your BackboneJS, AngularJS or EmberJS apps crawlable by Google to make them appear in search results. Integrating it to your Node.js (read: Express.js) application is easy.
 
 ## Installation
 
