@@ -1,6 +1,6 @@
 {
   "name": "express-seojs",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "SEO.js makes your BackboneJS, AngularJS or EmberJS apps crawlable by Google to make them appear in search results",
   "author": "SEO.js",
   "license": "MIT",
