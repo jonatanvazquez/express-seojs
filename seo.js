@@ -1,4 +1,5 @@
 var http = require('http');
+var url = require('url');
 
 var seojs = module.exports = function(tok) {
 
@@ -28,8 +29,10 @@ var seojs = module.exports = function(tok) {
         return snapshotServer + '/' + url;
     }
 
-    function getSnapshot(snapshotUrl, outResponse, next) {
-        http.get(snapshotUrl, function(inResponse) {
+    function getSnapshot(snapshotUrl, headers, outResponse, next) {
+        var options = url.parse(snapshotUrl);
+        options['headers'] = headers;
+        http.get(options, function(inResponse) {
 
             if(inResponse && inResponse.statusCode == 200) {
                 outResponse.writeHead(inResponse.statusCode, inResponse.headers);
@@ -48,6 +51,18 @@ var seojs = module.exports = function(tok) {
         });
     }
 
+    function getHeaders(req) {
+        var headers = {};
+        var keys = ['user-agent', 'if-none-match', 'if-modified-since', 'cache-control'];
+        for (var i in keys) {
+            var key = keys[i];
+            if (req.headers[key]) {
+                headers[key] = req.headers[key];
+            }
+        }
+        return headers;
+    }
+
     function isEnabled(){
         return !!(token || process.env.SEOJS_URL);
     }
@@ -61,7 +76,7 @@ var seojs = module.exports = function(tok) {
 
     return function(req, res, next) {
         if (isEnabled() && shouldForward(req)) {
-            getSnapshot(getSnapshotUrl(req), res, next);
+            getSnapshot(getSnapshotUrl(req), getHeaders(req), res, next);
         } else {
             return next();
         }
